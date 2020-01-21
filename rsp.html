@@ -50,13 +50,24 @@
                 }
                 break;
             default:
-                    return 'Player selection illegal. Only \'rock\', \'paper\' or \'scissors\' is allowed.';
+                    return 'ERROR! Player selection illegal. Only \'rock\', \'paper\' or \'scissors\' is allowed.';
         }
     }
 
-    const playerSelection = 'paper';
-    const computerSelection = computerPlay();
-    console.log('Player selection: ', playerSelection);
-    console.log('Computer selection: ', computerSelection);
-    console.log(playRound(playerSelection, computerSelection));
+    function game(){
+        let playerSelection = null;
+        while(playerSelection !== 'x'){
+            playerSelection = window.prompt('Choose your weapon: [rock / paper / scissors]. Press x to quit');
+            if(playerSelection === 'x'){
+                alert('Game ended by user...');
+                break;
+            }
+            let computerSelection = computerPlay();
+            alert('Computer selected: ' + computerSelection + '\n' + playRound(playerSelection, computerSelection));
+        }
+    }
+
+    game();
+
+    
 </script>
