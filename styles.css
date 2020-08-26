@@ -25,3 +25,6 @@ img{
     cursor: pointer;
 }
 
+.scoresContainer {
+  text-align: center;
+}
