@@ -8,10 +8,12 @@ const playerText = document.getElementById("player");
 const computerText = document.getElementById("computer");
 const playerScore = document.getElementById("playerScore");
 const computerScore = document.getElementById("computerScore");
-const scoresContainer = document.querySelector("#scores");
+const resetButton = document.querySelector("#resetButton");
 
 var numPlayerWins = 0;
 var numComputerWins = 0;
+computerScore.textContent = numComputerWins;
+playerScore.textContent = numPlayerWins;
 
 function computerPlay() {
   const alternativer = ["rock", "paper", "scissors"];
@@ -23,14 +25,14 @@ function playGame(playerSelection) {
   playerSelection = playerSelection.toLowerCase();
   const computerSelection = computerPlay().toLowerCase();
 
-  playerText.textContent = "You chose: " + playerSelection;
-  computerText.textContent = "Computer chose: " + computerSelection;
+  playerText.textContent = `selected ${playerSelection}`
+  computerText.textContent = `selected ${computerSelection}`
 
   switch (playerSelection) {
     case "rock":
       switch (computerSelection) {
         case "rock":
-          text.textContent = "Draw";
+          text.textContent = "Draw!";
           break;
         case "paper":
           numComputerWins++;
@@ -82,20 +84,10 @@ function playGame(playerSelection) {
 
   if (numPlayerWins === 5) {
     alert("You reached 5 points, you win!");
-    showResetButton();
   }
   if (numComputerWins === 5) {
     alert("Computer reached 5 points, you lose!");
-    showResetButton();
   }
-}
-
-function showResetButton() {
-  const newButton = document.createElement("button");
-  newButton.setAttribute("id", "newButton");
-  newButton.innerHTML = "Reset Game";
-  newButton.addEventListener("click", resetGame);
-  scoresContainer.appendChild(newButton);
 }
 
 function resetGame() {
@@ -104,20 +96,14 @@ function resetGame() {
   numPlayerWins = 0;
   playerText.textContent = "";
   computerText.textContent = "";
-  computerScore.textContent = "";
-  playerScore.textContent = "";
-  const newButton = document.querySelector("#newButton");
-  scoresContainer.removeChild(newButton);
+  computerScore.textContent = numComputerWins;
+  playerScore.textContent = numPlayerWins;
 }
 
-rock.addEventListener("click", function () {
-  playGame("rock");
-});
+rock.addEventListener("click", () => playGame("rock"), true);
 
-paper.addEventListener("click", function () {
-  playGame("paper");
-});
+paper.addEventListener("click", () => playGame("paper"), true);
 
-scissors.addEventListener("click", function () {
-  playGame("scissors");
-});
+scissors.addEventListener("click", () => playGame("scissors"), true);
+
+resetButton.addEventListener("click", () => resetGame(), true)

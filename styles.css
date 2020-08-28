@@ -10,13 +10,20 @@ h3 {
     text-align: center;
 }
 
+h4 {
+  text-align: center;
+}
+
+h5 {
+  text-align: center;
+}
+
 img{
-    width: 30%;
+    width: 20vw;
 }
 .knapper {
     padding: 20px;
-    text-align: center;  
-    border: solid 10px;  
+    text-align: center;
     margin-left: 25%;
     margin-right: 25%;
 }
